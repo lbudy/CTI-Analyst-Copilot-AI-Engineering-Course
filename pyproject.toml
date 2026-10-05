@@ -1,5 +1,5 @@
 [project]
-name = "CTI Analyst Copilot"
+name = "cti-analyst-copilot"
 version = "0.1.0"
 description = "My AI Engineering Buildcamp project"
 readme = "README.md"
