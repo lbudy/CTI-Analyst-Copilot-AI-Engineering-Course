@@ -1,0 +1,137 @@
+{
+  "version": "1.0",
+  "purpose": "Report prioritization; not attack probability or a calibrated business risk assessment",
+  "scale": {
+    "0": "Explicit absence or mismatch supported by evidence",
+    "1": "Limited relevance",
+    "2": "Relevant overlap",
+    "3": "Strong relevance with remaining uncertainty",
+    "4": "Strong direct relevance",
+    "unknown": "Insufficient evidence; never silently treated as zero"
+  },
+  "criteria": [
+    {
+      "criterion_id": "direct_targeting",
+      "weight": 15,
+      "name": "Direct company targeting",
+      "anchors": {
+        "0": "Company connection explicitly ruled out",
+        "2": "Relevant subsidiary, brand, or supplier targeted",
+        "4": "Credible targeting of company assets or personnel"
+      }
+    },
+    {
+      "criterion_id": "sector_targeting",
+      "weight": 12,
+      "name": "Chemical-sector targeting",
+      "anchors": {
+        "0": "Explicitly unrelated victim scope",
+        "2": "Adjacent process industry targeted",
+        "4": "Chemical manufacturers targeted anywhere worldwide"
+      }
+    },
+    {
+      "criterion_id": "proximity",
+      "weight": 6,
+      "name": "Geographic and operational proximity",
+      "anchors": {
+        "0": "No relevant operational connection",
+        "2": "European targeting or connected supply chain",
+        "4": "German chemical operations or directly connected sites affected"
+      }
+    },
+    {
+      "criterion_id": "technology",
+      "weight": 15,
+      "name": "Technology applicability",
+      "anchors": {
+        "0": "Technology confirmed absent",
+        "2": "Deployed product family; affected version unknown",
+        "4": "Affected version and deployment conditions match"
+      }
+    },
+    {
+      "criterion_id": "incident_connection",
+      "weight": 8,
+      "name": "Connection to previous incidents",
+      "anchors": {
+        "0": "Reviewed evidence rules out connection",
+        "2": "Similar entry method or TTPs",
+        "4": "Validated linkage to a company incident or unresolved exposure"
+      }
+    },
+    {
+      "criterion_id": "impact",
+      "weight": 18,
+      "name": "Potential business and safety impact",
+      "anchors": {
+        "0": "No plausible material consequence",
+        "2": "Localized disruption or limited data loss",
+        "4": "Credible unsafe operations, major outage, or critical IP loss"
+      }
+    },
+    {
+      "criterion_id": "activity",
+      "weight": 12,
+      "name": "Exploitation and activity",
+      "anchors": {
+        "0": "No exploitation reported in source",
+        "2": "Working exploit or observed campaign",
+        "4": "Active exploitation of matching exposed technology or ongoing targeting"
+      }
+    },
+    {
+      "criterion_id": "access_exposure",
+      "weight": 8,
+      "name": "Access path and control exposure",
+      "anchors": {
+        "0": "Relevant path demonstrably blocked",
+        "2": "Plausible path; controls partly verified",
+        "4": "Matching reachable path with verified control gap"
+      }
+    },
+    {
+      "criterion_id": "pir_relevance",
+      "weight": 6,
+      "name": "Intelligence requirement relevance",
+      "anchors": {
+        "0": "Outside defined requirements",
+        "2": "Partially answers a PIR",
+        "4": "Directly answers a priority PIR or closes a documented gap"
+      }
+    }
+  ],
+  "thresholds": [
+    {
+      "minimum": 80,
+      "priority": "P1",
+      "review_target": "Same working day"
+    },
+    {
+      "minimum": 60,
+      "priority": "P2",
+      "review_target": "Within one working day"
+    },
+    {
+      "minimum": 40,
+      "priority": "P3",
+      "review_target": "Within three working days"
+    },
+    {
+      "minimum": 20,
+      "priority": "P4",
+      "review_target": "Weekly review"
+    },
+    {
+      "minimum": 0,
+      "priority": "P5",
+      "review_target": "Periodic review"
+    }
+  ],
+  "escalation_triggers": [
+    "current_company_targeting",
+    "internal_activity_connection",
+    "active_matching_exposed_exploitation",
+    "process_or_safety_manipulation"
+  ]
+}

@@ -1,23 +1,154 @@
 {
-  "profile_id": "fictional-us-water-utility",
+  "profile_id": "fictional-german-chemical-manufacturer",
   "synthetic": true,
-  "sector": "Water and wastewater",
-  "geography": "United States",
+  "company_name": "RheinChem Specialty Chemicals GmbH",
+  "sector": "Chemical manufacturing",
+  "geography": "Germany; European customers",
+  "locations": [
+    "Two fictional German production plants"
+  ],
+  "critical_operations": [
+    "Continuous production",
+    "Batch formulation",
+    "Laboratory testing",
+    "Storage and shipping"
+  ],
+  "sensitive_information": [
+    "Chemical formulas",
+    "Process recipes",
+    "Research",
+    "Customer contracts"
+  ],
   "technology_exposure": [
-    "Windows servers and Active Directory",
-    "Fortinet perimeter appliances"
+    "Windows and Active Directory",
+    "Microsoft 365",
+    "SAP",
+    "Fortinet perimeter appliances",
+    "VMware",
+    "Siemens PLCs",
+    "Distributed control systems",
+    "Engineering workstations",
+    "Historians",
+    "Safety instrumented systems"
+  ],
+  "external_dependencies": [
+    "Equipment manufacturers",
+    "Maintenance contractors",
+    "Logistics providers",
+    "Managed IT services"
+  ],
+  "remote_access": "Approved vendor VPN and jump hosts; exposure and control effectiveness unverified",
+  "incident_history": [
+    {
+      "incident_id": "SYN-01",
+      "synthetic": true,
+      "description": "Resolved vendor-account compromise; actor unattributed; no confirmed OT compromise"
+    },
+    {
+      "incident_id": "SYN-02",
+      "synthetic": true,
+      "description": "Blocked finance phishing; actor unattributed"
+    }
   ],
   "priority_intelligence_requirements": [
-    "PIR-1: Identify state-sponsored actors targeting US water utilities and their access and persistence methods.",
-    "PIR-2: Identify exploited vulnerabilities and ransomware campaigns affecting our deployed technology."
+    {
+      "pir_id": "PIR-01",
+      "title": "Actor targeting",
+      "question": "Which actors target chemical manufacturers worldwide, with what objectives and access methods?"
+    },
+    {
+      "pir_id": "PIR-02",
+      "title": "Direct targeting",
+      "question": "Is RheinChem, its subsidiaries, brands, domains, or personnel being targeted?"
+    },
+    {
+      "pir_id": "PIR-03",
+      "title": "Regional campaigns",
+      "question": "Which campaigns affecting Germany or European process industries apply to our operations?"
+    },
+    {
+      "pir_id": "PIR-04",
+      "title": "Exploited vulnerabilities",
+      "question": "Which actively exploited vulnerabilities affect our deployed IT, OT, and remote-access products?"
+    },
+    {
+      "pir_id": "PIR-05",
+      "title": "Ransomware",
+      "question": "Which ransomware and extortion campaigns could interrupt production, laboratories, or shipping?"
+    },
+    {
+      "pir_id": "PIR-06",
+      "title": "IT to OT access",
+      "question": "Which threats cross from enterprise IT into OT, and through which paths?"
+    },
+    {
+      "pir_id": "PIR-07",
+      "title": "Process and safety systems",
+      "question": "Which threats target PLCs, control systems, engineering workstations, or safety functions?"
+    },
+    {
+      "pir_id": "PIR-08",
+      "title": "Industrial espionage",
+      "question": "Which actors seek formulas, research, process recipes, or intellectual property?"
+    },
+    {
+      "pir_id": "PIR-09",
+      "title": "Identity compromise",
+      "question": "Which identity attacks affect directories, cloud accounts, privileged users, or service accounts?"
+    },
+    {
+      "pir_id": "PIR-10",
+      "title": "Vendor access",
+      "question": "Which threats exploit maintenance contractors, remote access, or trusted equipment suppliers?"
+    },
+    {
+      "pir_id": "PIR-11",
+      "title": "Dependencies",
+      "question": "Which supplier, logistics, utility, or managed-service compromises threaten production continuity?"
+    },
+    {
+      "pir_id": "PIR-12",
+      "title": "Social engineering",
+      "question": "Which phishing campaigns target finance, procurement, researchers, or plant personnel?"
+    },
+    {
+      "pir_id": "PIR-13",
+      "title": "Detection and hunting",
+      "question": "Which reported persistence, lateral movement, and command-and-control behaviors can we detect?"
+    },
+    {
+      "pir_id": "PIR-14",
+      "title": "Exfiltration",
+      "question": "Which exfiltration methods threaten chemical research and business data?"
+    },
+    {
+      "pir_id": "PIR-15",
+      "title": "Destructive activity",
+      "question": "Which sabotage, destructive, or hacktivist campaigns pose a credible operational threat?"
+    },
+    {
+      "pir_id": "PIR-16",
+      "title": "Incident connections",
+      "question": "Does reporting explain, extend, or contradict previous incident findings?"
+    },
+    {
+      "pir_id": "PIR-17",
+      "title": "Collection gaps",
+      "question": "Which evidence gaps prevent assessment of exposure or detection of relevant threats?"
+    }
   ],
   "risk_criteria": [
-    "Prioritize threats with evidence of sector and geography overlap.",
-    "Prioritize exploitation of deployed technology and threats to operational availability."
+    "Safety and production continuity",
+    "Chemical-sector targeting worldwide",
+    "Applicable technology and access paths",
+    "Research and intellectual property protection"
   ],
   "unknowns": [
     "Exact product versions and patch status",
+    "Actual external exposure",
+    "Control effectiveness",
+    "Current internal telemetry and compromise status",
     "Whether MOVEit Transfer is deployed",
-    "Actual internal telemetry and compromise status"
+    "Company domains and subsidiaries not supplied"
   ]
 }

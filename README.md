@@ -124,3 +124,32 @@ The CTI Analyst Copilot therefore aims to assist the intelligence lifecycle rath
 ## Data
 
 Put your project data in the `data/` folder. See `notebooks/02-rag.ipynb` for how to load it.
+
+## Implemented course baseline
+
+`notebooks/02-rag.ipynb` retains the local CISA corpus, 3,000-character chunks with
+500-character overlap, MinSearch TF-IDF retrieval of five passages, and the
+`search → build_prompt → llm → rag` question-answering pipeline.
+
+The notebook contains the complete analyst-reviewed workflow code, company profile,
+PIRs, and matrix inline. `cti_workflow.py` remains a companion implementation for
+standalone use and tests; the notebook does not import it. The workflow supports:
+
+1. Inspect the fictional German chemical company, 17 PIRs, and weighted matrix.
+2. Explicitly enable `RUN_TRIAGE` to assess every complete report independently.
+3. Review cited criterion assessments, PIR mappings, score ranges, confidence,
+   evidence coverage, gaps, escalation flags, and visible failures.
+4. Record approve/defer/reject decisions, reasons, and optional priority overrides.
+5. Explicitly process approved reports into Pydantic-validated summaries, entities,
+   technical evidence, and proposed IR/hunting/detection actions.
+6. Approve the processed output separately before exporting a local JSON handoff.
+
+The saved unreviewed queue reloads by default. Set `LOAD_SAVED_TRIAGE = False`
+in section 6 to make fresh paid triage calls. Token usage is captured for triage
+and processing. Audit
+records and exports live in gitignored `outputs/`. The baseline trusts the person
+running the notebook; analyst identities are entered manually, not authenticated.
+Exact quotations are checked, but semantic interpretation still requires review.
+SIEM connectors, enrichment services, and automatic distribution are not implemented.
+
+Offline verification: `uv run python -m unittest discover -s tests -v`.

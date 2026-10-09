@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "minsearch>=0.2.0",
+    "pydantic>=2.0,<3",
     "openai>=3.16.2",
     "python-dotenv>=1.2.3",
 ]

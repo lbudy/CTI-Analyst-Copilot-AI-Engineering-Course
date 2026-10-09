@@ -19,18 +19,38 @@ the body may include later revisions. Each record has `report_id`, `title`,
 plus a stable `chunk_id` consisting of the report ID and character offset.
 No model-generated summaries or fabricated threat facts are in this corpus.
 
-`organization_profile.json` is a **synthetic** US water utility profile with
+`organization_profile_water_utility.json` preserves the original **synthetic** US water utility profile with
 PIRs, technology exposure, geography, sector, risk criteria, and explicit unknowns.
 Replace it with your organization's approved requirements before real use.
 It contains no real customer details or internal telemetry.
 
 Run `notebooks/02-rag.ipynb` from the repository root or `notebooks/` directory.
-Loading and retrieval use the local files without network access. The final
+Loading and retrieval use the local files without network access. An enabled
 `rag(...)` call requires `OPENAI_API_KEY` in the environment or the repository's
-gitignored `.env` and sends the question, synthetic profile, and retrieved public
+gitignored `.env` and sends the question, active synthetic profile, and retrieved public
 chunks to OpenAI. No external enrichment or SIEM connectors are implemented.
 
 Other realistic data options are MITRE ATT&CK's downloadable STIX objects
 (https://attack.mitre.org/resources/attack-data-and-tools/) for structured
 enrichment, or clearly labeled synthetic reports and SIEM events for testing
 workflow behavior. Neither substitutes for public report evidence in this corpus.
+
+## Chemical manufacturer triage profile
+
+The active `organization_profile.json` now describes **RheinChem Specialty Chemicals
+GmbH**, a fictional German chemical manufacturer with 17 PIRs. All company details,
+technology assumptions, and two incident-history fixtures are synthetic. The earlier
+US water utility profile is preserved as `organization_profile_water_utility.json`.
+
+`risk_matrix.json` defines nine criteria totaling 100 weight points, 0–4 ratings,
+unknowns, P1–P5 thresholds, and immediate-review triggers. These are proposed project
+defaults, not a validated probability model or an industry scoring standard. Unknown
+criteria contribute a range, not an assumed zero. Publication dates do not establish
+current targeting or exploitation. The historical CISA corpus remains unchanged.
+
+Background guidance informing the proposed focus on safety, operations, and exposure:
+- BSI ICS Security Compendium: https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/ICS/ICS-Security_compendium.html?nn=128768
+- Chemical Sector Cybersecurity Framework Implementation Guidance: https://www.cisa.gov/sites/default/files/c3vp/framework_guidance/chemical-framework-implementation-guide-2015-508.pdf
+
+The matrix, exact weights, thresholds, and company profile are authored project
+assumptions, not values prescribed by these sources.
