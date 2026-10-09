@@ -1,0 +1,23 @@
+{
+  "profile_id": "fictional-us-water-utility",
+  "synthetic": true,
+  "sector": "Water and wastewater",
+  "geography": "United States",
+  "technology_exposure": [
+    "Windows servers and Active Directory",
+    "Fortinet perimeter appliances"
+  ],
+  "priority_intelligence_requirements": [
+    "PIR-1: Identify state-sponsored actors targeting US water utilities and their access and persistence methods.",
+    "PIR-2: Identify exploited vulnerabilities and ransomware campaigns affecting our deployed technology."
+  ],
+  "risk_criteria": [
+    "Prioritize threats with evidence of sector and geography overlap.",
+    "Prioritize exploitation of deployed technology and threats to operational availability."
+  ],
+  "unknowns": [
+    "Exact product versions and patch status",
+    "Whether MOVEit Transfer is deployed",
+    "Actual internal telemetry and compromise status"
+  ]
+}
