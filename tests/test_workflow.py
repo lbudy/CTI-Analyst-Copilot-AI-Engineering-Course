@@ -195,3 +195,24 @@ class ConservativeEvidenceTests(unittest.TestCase):
             path.write_text(json.dumps({'triage': {'TEST': entry}, 'usage': []}))
             with self.assertRaises(ValueError):
                 w.load_unreviewed(path)
+
+class CitationTests(unittest.TestCase):
+    def test_section_at_quote_and_escaped_display(self):
+        from cti_workflow import analyst_citations, render_evidence_html
+        report = {**REPORT, 'content': 'SUMMARY\nOpening.\nCredential Access\nTool <script>example</script> observed.'}
+        chunks = chunk_reports([report])
+        self.assertEqual(chunks[0]['section_headings'], ['SUMMARY', 'Credential Access'])
+        record = {'evidence': [{'chunk_id': 'TEST:0', 'quote': 'Tool <script>example</script> observed.'}]}
+        citations = analyst_citations(record, chunks, [report])
+        self.assertEqual(citations[0]['section_heading'], 'Credential Access')
+        html = render_evidence_html(record, chunks, [report])
+        self.assertIn('&lt;script&gt;', html)
+        self.assertNotIn('<script>', html)
+        self.assertNotIn('TEST:0', html)
+        self.assertIn('View original report', html)
+
+    def test_missing_section_and_invalid_quote(self):
+        from cti_workflow import analyst_citations
+        citations = analyst_citations({'chunk_id': 'TEST:0', 'quote': 'Synthetic chemical sector incident.'}, CHUNKS, [REPORT])
+        self.assertEqual(citations[0]['section_heading'], 'Section not identified in snapshot')
+        self.assertEqual(analyst_citations({'chunk_id': 'TEST:0', 'quote': 'Invented'}, CHUNKS, [REPORT]), [])

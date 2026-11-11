@@ -1,0 +1,132 @@
+[
+  {
+    "case_id": "smoke-AA24-038A",
+    "question": "Find the report titled PRC State-Sponsored Actors Compromise and Maintain Persistent Access to U.S. Critical Infrastructure",
+    "expected_report_ids": [
+      "AA24-038A"
+    ],
+    "reference_answer": "The matching report is PRC State-Sponsored Actors Compromise and Maintain Persistent Access to U.S. Critical Infrastructure",
+    "supporting_quote": "The Cybersecurity and Infrastructure Security Agency (CISA), National Security Agency (NSA), and Federal Bureau of Investigation (FBI) assess that People\u2019s Republic of China (PRC) state-sponsored cyber actors are seeking to pre-position themselves on IT networks for disruptive or destructive cyberattacks against U.S. critical infrastructure in the event of a major crisis or conflict with the United States.",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA23-144A",
+    "question": "Find the report titled People's Republic of China State-Sponsored Cyber Actor Living off the Land to Evade Detection",
+    "expected_report_ids": [
+      "AA23-144A"
+    ],
+    "reference_answer": "The matching report is People's Republic of China State-Sponsored Cyber Actor Living off the Land to Evade Detection",
+    "supporting_quote": "The United States and international cybersecurity authorities are issuing this joint Cybersecurity Advisory (CSA) to highlight a recently discovered cluster of activity of interest associated with a People\u2019s Republic of China (PRC) state-sponsored cyber actor, also known as",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA23-158A",
+    "question": "Find the report titled #StopRansomware: CL0P Ransomware Gang Exploits CVE-2023-34362 MOVEit Vulnerability",
+    "expected_report_ids": [
+      "AA23-158A"
+    ],
+    "reference_answer": "The matching report is #StopRansomware: CL0P Ransomware Gang Exploits CVE-2023-34362 MOVEit Vulnerability",
+    "supporting_quote": "This CSA is being re-released to remove old Fortra GoAnywhere Campaign IP addresses and to add new IP addresses. See the update below.",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA24-109A",
+    "question": "Find the report titled #StopRansomware: Akira Ransomware",
+    "expected_report_ids": [
+      "AA24-109A"
+    ],
+    "reference_answer": "The matching report is #StopRansomware: Akira Ransomware",
+    "supporting_quote": "To report suspicious or criminal activity related to information found in this joint Cybersecurity Advisory, contact FBI\u2019s",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA24-242A",
+    "question": "Find the report titled #StopRansomware: RansomHub Ransomware",
+    "expected_report_ids": [
+      "AA24-242A"
+    ],
+    "reference_answer": "The matching report is #StopRansomware: RansomHub Ransomware",
+    "supporting_quote": "To report suspicious or criminal activity related to information found in this joint Cybersecurity Advisory, contact",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA24-131A",
+    "question": "Find the report titled #StopRansomware: Black Basta",
+    "expected_report_ids": [
+      "AA24-131A"
+    ],
+    "reference_answer": "The matching report is #StopRansomware: Black Basta",
+    "supporting_quote": "To report suspicious or criminal activity related to information found in this joint Cybersecurity Advisory, contact",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA23-320A",
+    "question": "Find the report titled Scattered Spider",
+    "expected_report_ids": [
+      "AA23-320A"
+    ],
+    "reference_answer": "The matching report is Scattered Spider",
+    "supporting_quote": "To report suspicious or criminal activity related to information found in this joint Cybersecurity Advisory, contact your",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA23-319A",
+    "question": "Find the report titled #StopRansomware: Rhysida Ransomware",
+    "expected_report_ids": [
+      "AA23-319A"
+    ],
+    "reference_answer": "The matching report is #StopRansomware: Rhysida Ransomware",
+    "supporting_quote": "To report suspicious or criminal activity related to information found in this joint Cybersecurity Advisory, contact",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA25-071A",
+    "question": "Find the report titled #StopRansomware: Medusa Ransomware",
+    "expected_report_ids": [
+      "AA25-071A"
+    ],
+    "reference_answer": "The matching report is #StopRansomware: Medusa Ransomware",
+    "supporting_quote": "To report suspicious or criminal activity related to information found in this joint Cybersecurity Advisory, contact",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA23-165A",
+    "question": "Find the report titled Understanding Ransomware Threat Actors: LockBit",
+    "expected_report_ids": [
+      "AA23-165A"
+    ],
+    "reference_answer": "The matching report is Understanding Ransomware Threat Actors: LockBit",
+    "supporting_quote": "This document is marked TLP:CLEAR. Disclosure is not limited. Sources may use TLP:CLEAR when information",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA23-136A",
+    "question": "Find the report titled #StopRansomware: BianLian Data Extortion Group",
+    "expected_report_ids": [
+      "AA23-136A"
+    ],
+    "reference_answer": "The matching report is #StopRansomware: BianLian Data Extortion Group",
+    "supporting_quote": "U.S. Organizations: To report suspicious or criminal activity related to information found in this joint Cybersecurity",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA23-335A",
+    "question": "Find the report titled IRGC-Affiliated Cyber Actors Exploit PLCs in Multiple Sectors, Including US Water and Wastewater Systems Facilities",
+    "expected_report_ids": [
+      "AA23-335A"
+    ],
+    "reference_answer": "The matching report is IRGC-Affiliated Cyber Actors Exploit PLCs in Multiple Sectors, Including US Water and Wastewater Systems Facilities",
+    "supporting_quote": "U.S. organizations: To report suspicious or criminal activity related to information found in this joint Cybersecurity",
+    "analyst_reviewed": false
+  },
+  {
+    "case_id": "smoke-AA23-061A",
+    "question": "Find the report titled #StopRansomware: BlackSuit (Royal) Ransomware",
+    "expected_report_ids": [
+      "AA23-061A"
+    ],
+    "reference_answer": "The matching report is #StopRansomware: BlackSuit (Royal) Ransomware",
+    "supporting_quote": "To report suspicious or criminal activity related to information found in this joint Cybersecurity Advisory, contact",
+    "analyst_reviewed": false
+  }
+]

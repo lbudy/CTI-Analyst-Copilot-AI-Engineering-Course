@@ -1,0 +1,1167 @@
+[
+  {
+    "report_id": "AA24-109A",
+    "source_url": "https://www.ic3.gov/CSA/2025/251113.pdf",
+    "snapshot_date": "2026-11-11",
+    "local_pdf": "data/source_reports/AA24-109A.pdf",
+    "pdf_sha256": "c3f805637ed8fd8884996d00144ef338dedc58257d6f5deb3afc65ff18947bd1",
+    "content_sha256": "1c7787782f8797febc4996460d83b0f2e452260d233d018a4e0f3fedcaa7f7e6",
+    "bytes": 970925,
+    "page_count": 31,
+    "text_characters": 63211,
+    "page_spans": [
+      {
+        "page": 1,
+        "start": 0,
+        "end": 2482
+      },
+      {
+        "page": 2,
+        "start": 2484,
+        "end": 5527
+      },
+      {
+        "page": 3,
+        "start": 5529,
+        "end": 5748
+      },
+      {
+        "page": 4,
+        "start": 5750,
+        "end": 9529
+      },
+      {
+        "page": 5,
+        "start": 9531,
+        "end": 12166
+      },
+      {
+        "page": 6,
+        "start": 12168,
+        "end": 14677
+      },
+      {
+        "page": 7,
+        "start": 14679,
+        "end": 16980
+      },
+      {
+        "page": 8,
+        "start": 16982,
+        "end": 19897
+      },
+      {
+        "page": 9,
+        "start": 19899,
+        "end": 22343
+      },
+      {
+        "page": 10,
+        "start": 22345,
+        "end": 24712
+      },
+      {
+        "page": 11,
+        "start": 24714,
+        "end": 26882
+      },
+      {
+        "page": 12,
+        "start": 26884,
+        "end": 28096
+      },
+      {
+        "page": 13,
+        "start": 28098,
+        "end": 29623
+      },
+      {
+        "page": 14,
+        "start": 29625,
+        "end": 31087
+      },
+      {
+        "page": 15,
+        "start": 31089,
+        "end": 32329
+      },
+      {
+        "page": 16,
+        "start": 32331,
+        "end": 33401
+      },
+      {
+        "page": 17,
+        "start": 33403,
+        "end": 35260
+      },
+      {
+        "page": 18,
+        "start": 35262,
+        "end": 37052
+      },
+      {
+        "page": 19,
+        "start": 37054,
+        "end": 38610
+      },
+      {
+        "page": 20,
+        "start": 38612,
+        "end": 40068
+      },
+      {
+        "page": 21,
+        "start": 40070,
+        "end": 41997
+      },
+      {
+        "page": 22,
+        "start": 41999,
+        "end": 43643
+      },
+      {
+        "page": 23,
+        "start": 43645,
+        "end": 44871
+      },
+      {
+        "page": 24,
+        "start": 44873,
+        "end": 46525
+      },
+      {
+        "page": 25,
+        "start": 46527,
+        "end": 49135
+      },
+      {
+        "page": 26,
+        "start": 49137,
+        "end": 52078
+      },
+      {
+        "page": 27,
+        "start": 52080,
+        "end": 54652
+      },
+      {
+        "page": 28,
+        "start": 54654,
+        "end": 57809
+      },
+      {
+        "page": 29,
+        "start": 57811,
+        "end": 58715
+      },
+      {
+        "page": 30,
+        "start": 58717,
+        "end": 62801
+      },
+      {
+        "page": 31,
+        "start": 62803,
+        "end": 63211
+      }
+    ]
+  },
+  {
+    "report_id": "AA24-242A",
+    "source_url": "https://www.ic3.gov/CSA/2024/240829.pdf",
+    "snapshot_date": "2026-11-11",
+    "local_pdf": "data/source_reports/AA24-242A.pdf",
+    "pdf_sha256": "e4bb30bf789a5ab880e5bd03e756ce0d7c9bad4673f3cc0c3512bbad82eb5d34",
+    "content_sha256": "12abb17a86490b93c3c47fdc311556e331acd5cf198b65a5b336f50f23bc2e31",
+    "bytes": 723954,
+    "page_count": 24,
+    "text_characters": 43409,
+    "page_spans": [
+      {
+        "page": 1,
+        "start": 0,
+        "end": 3209
+      },
+      {
+        "page": 2,
+        "start": 3211,
+        "end": 4323
+      },
+      {
+        "page": 3,
+        "start": 4325,
+        "end": 7564
+      },
+      {
+        "page": 4,
+        "start": 7566,
+        "end": 10148
+      },
+      {
+        "page": 5,
+        "start": 10150,
+        "end": 12900
+      },
+      {
+        "page": 6,
+        "start": 12902,
+        "end": 14306
+      },
+      {
+        "page": 7,
+        "start": 14308,
+        "end": 15530
+      },
+      {
+        "page": 8,
+        "start": 15532,
+        "end": 16546
+      },
+      {
+        "page": 9,
+        "start": 16548,
+        "end": 18362
+      },
+      {
+        "page": 10,
+        "start": 18364,
+        "end": 19888
+      },
+      {
+        "page": 11,
+        "start": 19890,
+        "end": 20773
+      },
+      {
+        "page": 12,
+        "start": 20775,
+        "end": 21777
+      },
+      {
+        "page": 13,
+        "start": 21779,
+        "end": 23047
+      },
+      {
+        "page": 14,
+        "start": 23049,
+        "end": 24162
+      },
+      {
+        "page": 15,
+        "start": 24164,
+        "end": 25364
+      },
+      {
+        "page": 16,
+        "start": 25366,
+        "end": 26691
+      },
+      {
+        "page": 17,
+        "start": 26693,
+        "end": 28143
+      },
+      {
+        "page": 18,
+        "start": 28145,
+        "end": 29400
+      },
+      {
+        "page": 19,
+        "start": 29402,
+        "end": 31000
+      },
+      {
+        "page": 20,
+        "start": 31002,
+        "end": 33070
+      },
+      {
+        "page": 21,
+        "start": 33072,
+        "end": 36171
+      },
+      {
+        "page": 22,
+        "start": 36173,
+        "end": 39278
+      },
+      {
+        "page": 23,
+        "start": 39280,
+        "end": 41557
+      },
+      {
+        "page": 24,
+        "start": 41559,
+        "end": 43409
+      }
+    ]
+  },
+  {
+    "report_id": "AA24-131A",
+    "source_url": "https://www.ic3.gov/CSA/2024/240511.pdf",
+    "snapshot_date": "2026-11-11",
+    "local_pdf": "data/source_reports/AA24-131A.pdf",
+    "pdf_sha256": "0fadb7c9b6749bdd58a72ba367a9a682aebff0d6c08b223200cdfa088b859f76",
+    "content_sha256": "c57134b37b1ddd7dd74e351fb096e5817b1bfaf31aa092a5380e05647fed57eb",
+    "bytes": 601213,
+    "page_count": 10,
+    "text_characters": 24064,
+    "page_spans": [
+      {
+        "page": 1,
+        "start": 0,
+        "end": 3177
+      },
+      {
+        "page": 2,
+        "start": 3179,
+        "end": 5977
+      },
+      {
+        "page": 3,
+        "start": 5979,
+        "end": 8913
+      },
+      {
+        "page": 4,
+        "start": 8915,
+        "end": 11342
+      },
+      {
+        "page": 5,
+        "start": 11344,
+        "end": 13207
+      },
+      {
+        "page": 6,
+        "start": 13209,
+        "end": 14958
+      },
+      {
+        "page": 7,
+        "start": 14960,
+        "end": 17698
+      },
+      {
+        "page": 8,
+        "start": 17700,
+        "end": 20722
+      },
+      {
+        "page": 9,
+        "start": 20724,
+        "end": 23365
+      },
+      {
+        "page": 10,
+        "start": 23367,
+        "end": 24064
+      }
+    ]
+  },
+  {
+    "report_id": "AA23-320A",
+    "source_url": "https://www.ic3.gov/CSA/2025/250729.pdf",
+    "snapshot_date": "2026-11-11",
+    "local_pdf": "data/source_reports/AA23-320A.pdf",
+    "pdf_sha256": "a253f799f3d03d5dd222b4eaa914578a8fc0d23363d254f4b0d08bc0c0bb8d05",
+    "content_sha256": "ef57280805bd117a618e1778c728acd7ad925c93768f4e8e59748b7bb160a38b",
+    "bytes": 687957,
+    "page_count": 17,
+    "text_characters": 38683,
+    "page_spans": [
+      {
+        "page": 1,
+        "start": 0,
+        "end": 2380
+      },
+      {
+        "page": 2,
+        "start": 2382,
+        "end": 4918
+      },
+      {
+        "page": 3,
+        "start": 4920,
+        "end": 6992
+      },
+      {
+        "page": 4,
+        "start": 6994,
+        "end": 8959
+      },
+      {
+        "page": 5,
+        "start": 8961,
+        "end": 10951
+      },
+      {
+        "page": 6,
+        "start": 10953,
+        "end": 14693
+      },
+      {
+        "page": 7,
+        "start": 14695,
+        "end": 17266
+      },
+      {
+        "page": 8,
+        "start": 17268,
+        "end": 19296
+      },
+      {
+        "page": 9,
+        "start": 19298,
+        "end": 21009
+      },
+      {
+        "page": 10,
+        "start": 21011,
+        "end": 22939
+      },
+      {
+        "page": 11,
+        "start": 22941,
+        "end": 24651
+      },
+      {
+        "page": 12,
+        "start": 24653,
+        "end": 26262
+      },
+      {
+        "page": 13,
+        "start": 26264,
+        "end": 28971
+      },
+      {
+        "page": 14,
+        "start": 28973,
+        "end": 31782
+      },
+      {
+        "page": 15,
+        "start": 31784,
+        "end": 34499
+      },
+      {
+        "page": 16,
+        "start": 34501,
+        "end": 37094
+      },
+      {
+        "page": 17,
+        "start": 37096,
+        "end": 38683
+      }
+    ]
+  },
+  {
+    "report_id": "AA23-319A",
+    "source_url": "https://www.ic3.gov/CSA/2023/231115.pdf",
+    "snapshot_date": "2026-11-11",
+    "local_pdf": "data/source_reports/AA23-319A.pdf",
+    "pdf_sha256": "8bc83beac745482717cf26b20731eae9a59b7e7b5f3b2611bbe63bc72c88d828",
+    "content_sha256": "c67d3cf861e818abf95e581c89654176861876e2bb5ef6811f927d1bc054d5ae",
+    "bytes": 690745,
+    "page_count": 16,
+    "text_characters": 34707,
+    "page_spans": [
+      {
+        "page": 1,
+        "start": 0,
+        "end": 3016
+      },
+      {
+        "page": 2,
+        "start": 3018,
+        "end": 5972
+      },
+      {
+        "page": 3,
+        "start": 5974,
+        "end": 8444
+      },
+      {
+        "page": 4,
+        "start": 8446,
+        "end": 10581
+      },
+      {
+        "page": 5,
+        "start": 10583,
+        "end": 13145
+      },
+      {
+        "page": 6,
+        "start": 13147,
+        "end": 14170
+      },
+      {
+        "page": 7,
+        "start": 14172,
+        "end": 15915
+      },
+      {
+        "page": 8,
+        "start": 15917,
+        "end": 17984
+      },
+      {
+        "page": 9,
+        "start": 17986,
+        "end": 19550
+      },
+      {
+        "page": 10,
+        "start": 19552,
+        "end": 21002
+      },
+      {
+        "page": 11,
+        "start": 21004,
+        "end": 22371
+      },
+      {
+        "page": 12,
+        "start": 22373,
+        "end": 25129
+      },
+      {
+        "page": 13,
+        "start": 25131,
+        "end": 28409
+      },
+      {
+        "page": 14,
+        "start": 28411,
+        "end": 31276
+      },
+      {
+        "page": 15,
+        "start": 31278,
+        "end": 33552
+      },
+      {
+        "page": 16,
+        "start": 33554,
+        "end": 34707
+      }
+    ]
+  },
+  {
+    "report_id": "AA25-071A",
+    "source_url": "https://www.ic3.gov/CSA/2025/250312.pdf",
+    "snapshot_date": "2026-11-11",
+    "local_pdf": "data/source_reports/AA25-071A.pdf",
+    "pdf_sha256": "9af7c2261d2f01d0db85b56f0553e94ee7796846531863ebac0a645fb56462e3",
+    "content_sha256": "0931424f65d1fba52f097a05d4893e138efa7180ca60a13742c841880e5cf1d6",
+    "bytes": 688082,
+    "page_count": 15,
+    "text_characters": 32470,
+    "page_spans": [
+      {
+        "page": 1,
+        "start": 0,
+        "end": 2850
+      },
+      {
+        "page": 2,
+        "start": 2852,
+        "end": 5409
+      },
+      {
+        "page": 3,
+        "start": 5411,
+        "end": 7566
+      },
+      {
+        "page": 4,
+        "start": 7568,
+        "end": 10199
+      },
+      {
+        "page": 5,
+        "start": 10201,
+        "end": 12922
+      },
+      {
+        "page": 6,
+        "start": 12924,
+        "end": 14478
+      },
+      {
+        "page": 7,
+        "start": 14480,
+        "end": 16056
+      },
+      {
+        "page": 8,
+        "start": 16058,
+        "end": 17741
+      },
+      {
+        "page": 9,
+        "start": 17743,
+        "end": 19288
+      },
+      {
+        "page": 10,
+        "start": 19290,
+        "end": 22263
+      },
+      {
+        "page": 11,
+        "start": 22265,
+        "end": 24820
+      },
+      {
+        "page": 12,
+        "start": 24822,
+        "end": 27203
+      },
+      {
+        "page": 13,
+        "start": 27205,
+        "end": 29347
+      },
+      {
+        "page": 14,
+        "start": 29349,
+        "end": 31863
+      },
+      {
+        "page": 15,
+        "start": 31865,
+        "end": 32470
+      }
+    ]
+  },
+  {
+    "report_id": "AA23-165A",
+    "source_url": "https://www.ic3.gov/CSA/2023/230614.pdf",
+    "snapshot_date": "2026-11-11",
+    "local_pdf": "data/source_reports/AA23-165A.pdf",
+    "pdf_sha256": "0b8d3bbb0dbdc387dc3c1108732e151eddf85d31c55eba7f5e956dce3e9b842d",
+    "content_sha256": "97375ff07f3df44e46bd52add5d80a2c70c509f26ca16ea3cabb5d2b9155fcd4",
+    "bytes": 797213,
+    "page_count": 29,
+    "text_characters": 56872,
+    "page_spans": [
+      {
+        "page": 1,
+        "start": 0,
+        "end": 695
+      },
+      {
+        "page": 2,
+        "start": 697,
+        "end": 2804
+      },
+      {
+        "page": 3,
+        "start": 2806,
+        "end": 5020
+      },
+      {
+        "page": 4,
+        "start": 5022,
+        "end": 7437
+      },
+      {
+        "page": 5,
+        "start": 7439,
+        "end": 9262
+      },
+      {
+        "page": 6,
+        "start": 9264,
+        "end": 10991
+      },
+      {
+        "page": 7,
+        "start": 10993,
+        "end": 11625
+      },
+      {
+        "page": 8,
+        "start": 11627,
+        "end": 14257
+      },
+      {
+        "page": 9,
+        "start": 14259,
+        "end": 16488
+      },
+      {
+        "page": 10,
+        "start": 16490,
+        "end": 18508
+      },
+      {
+        "page": 11,
+        "start": 18510,
+        "end": 20278
+      },
+      {
+        "page": 12,
+        "start": 20280,
+        "end": 22022
+      },
+      {
+        "page": 13,
+        "start": 22024,
+        "end": 23856
+      },
+      {
+        "page": 14,
+        "start": 23858,
+        "end": 25997
+      },
+      {
+        "page": 15,
+        "start": 25999,
+        "end": 27359
+      },
+      {
+        "page": 16,
+        "start": 27361,
+        "end": 29002
+      },
+      {
+        "page": 17,
+        "start": 29004,
+        "end": 30271
+      },
+      {
+        "page": 18,
+        "start": 30273,
+        "end": 31689
+      },
+      {
+        "page": 19,
+        "start": 31691,
+        "end": 33127
+      },
+      {
+        "page": 20,
+        "start": 33129,
+        "end": 35209
+      },
+      {
+        "page": 21,
+        "start": 35211,
+        "end": 38193
+      },
+      {
+        "page": 22,
+        "start": 38195,
+        "end": 41258
+      },
+      {
+        "page": 23,
+        "start": 41260,
+        "end": 44136
+      },
+      {
+        "page": 24,
+        "start": 44138,
+        "end": 46238
+      },
+      {
+        "page": 25,
+        "start": 46240,
+        "end": 48910
+      },
+      {
+        "page": 26,
+        "start": 48912,
+        "end": 49638
+      },
+      {
+        "page": 27,
+        "start": 49640,
+        "end": 52134
+      },
+      {
+        "page": 28,
+        "start": 52136,
+        "end": 54553
+      },
+      {
+        "page": 29,
+        "start": 54555,
+        "end": 56872
+      }
+    ]
+  },
+  {
+    "report_id": "AA23-136A",
+    "source_url": "https://www.ic3.gov/CSA/2024/241120.pdf",
+    "snapshot_date": "2026-11-11",
+    "local_pdf": "data/source_reports/AA23-136A.pdf",
+    "pdf_sha256": "0a5957a3113ae65b8f5121c64a60b9f4ee7abca1fa787434fa24ce87d93e96a6",
+    "content_sha256": "009e2f36934b3a2460712230e56a5e3ff6f13d69e422836503caf41f196163c7",
+    "bytes": 784390,
+    "page_count": 23,
+    "text_characters": 51679,
+    "page_spans": [
+      {
+        "page": 1,
+        "start": 0,
+        "end": 2884
+      },
+      {
+        "page": 2,
+        "start": 2886,
+        "end": 6344
+      },
+      {
+        "page": 3,
+        "start": 6346,
+        "end": 8982
+      },
+      {
+        "page": 4,
+        "start": 8984,
+        "end": 12231
+      },
+      {
+        "page": 5,
+        "start": 12233,
+        "end": 14490
+      },
+      {
+        "page": 6,
+        "start": 14492,
+        "end": 16876
+      },
+      {
+        "page": 7,
+        "start": 16878,
+        "end": 19093
+      },
+      {
+        "page": 8,
+        "start": 19095,
+        "end": 20695
+      },
+      {
+        "page": 9,
+        "start": 20697,
+        "end": 22322
+      },
+      {
+        "page": 10,
+        "start": 22324,
+        "end": 24012
+      },
+      {
+        "page": 11,
+        "start": 24014,
+        "end": 26031
+      },
+      {
+        "page": 12,
+        "start": 26033,
+        "end": 27713
+      },
+      {
+        "page": 13,
+        "start": 27715,
+        "end": 29247
+      },
+      {
+        "page": 14,
+        "start": 29249,
+        "end": 31197
+      },
+      {
+        "page": 15,
+        "start": 31199,
+        "end": 33981
+      },
+      {
+        "page": 16,
+        "start": 33983,
+        "end": 37212
+      },
+      {
+        "page": 17,
+        "start": 37214,
+        "end": 40127
+      },
+      {
+        "page": 18,
+        "start": 40129,
+        "end": 42651
+      },
+      {
+        "page": 19,
+        "start": 42653,
+        "end": 43949
+      },
+      {
+        "page": 20,
+        "start": 43951,
+        "end": 46085
+      },
+      {
+        "page": 21,
+        "start": 46087,
+        "end": 47994
+      },
+      {
+        "page": 22,
+        "start": 47996,
+        "end": 50314
+      },
+      {
+        "page": 23,
+        "start": 50316,
+        "end": 51679
+      }
+    ]
+  },
+  {
+    "report_id": "AA23-335A",
+    "source_url": "https://www.ic3.gov/CSA/2023/231201.pdf",
+    "snapshot_date": "2026-11-11",
+    "local_pdf": "data/source_reports/AA23-335A.pdf",
+    "pdf_sha256": "2d50a8e29814a1ff163d063f0304af064088fb3d52170e3228008c69d0f0ed5a",
+    "content_sha256": "0308dfd59327b23d55cb2020bc85fb26be88f4a06b14afab80387f4f95b1941f",
+    "bytes": 733455,
+    "page_count": 11,
+    "text_characters": 28882,
+    "page_spans": [
+      {
+        "page": 1,
+        "start": 0,
+        "end": 2659
+      },
+      {
+        "page": 2,
+        "start": 2661,
+        "end": 6173
+      },
+      {
+        "page": 3,
+        "start": 6175,
+        "end": 9175
+      },
+      {
+        "page": 4,
+        "start": 9177,
+        "end": 12200
+      },
+      {
+        "page": 5,
+        "start": 12202,
+        "end": 14111
+      },
+      {
+        "page": 6,
+        "start": 14113,
+        "end": 16275
+      },
+      {
+        "page": 7,
+        "start": 16277,
+        "end": 19171
+      },
+      {
+        "page": 8,
+        "start": 19173,
+        "end": 21764
+      },
+      {
+        "page": 9,
+        "start": 21766,
+        "end": 24905
+      },
+      {
+        "page": 10,
+        "start": 24907,
+        "end": 27045
+      },
+      {
+        "page": 11,
+        "start": 27047,
+        "end": 28882
+      }
+    ]
+  },
+  {
+    "report_id": "AA23-061A",
+    "source_url": "https://www.ic3.gov/CSA/2024/240807.pdf",
+    "snapshot_date": "2026-11-11",
+    "local_pdf": "data/source_reports/AA23-061A.pdf",
+    "pdf_sha256": "44c1a388f6f513af80f34a042ff7b0777ef41cc512d1ca7dbf7df6e4451d41c8",
+    "content_sha256": "fff9754d5c3dd77fc1b28047f44221a21958a46a8e91c654f7afbadca38776de",
+    "bytes": 676705,
+    "page_count": 31,
+    "text_characters": 51935,
+    "page_spans": [
+      {
+        "page": 1,
+        "start": 0,
+        "end": 2802
+      },
+      {
+        "page": 2,
+        "start": 2804,
+        "end": 5980
+      },
+      {
+        "page": 3,
+        "start": 5982,
+        "end": 8808
+      },
+      {
+        "page": 4,
+        "start": 8810,
+        "end": 11143
+      },
+      {
+        "page": 5,
+        "start": 11145,
+        "end": 12169
+      },
+      {
+        "page": 6,
+        "start": 12171,
+        "end": 12960
+      },
+      {
+        "page": 7,
+        "start": 12962,
+        "end": 13797
+      },
+      {
+        "page": 8,
+        "start": 13799,
+        "end": 14965
+      },
+      {
+        "page": 9,
+        "start": 14967,
+        "end": 16332
+      },
+      {
+        "page": 10,
+        "start": 16334,
+        "end": 17624
+      },
+      {
+        "page": 11,
+        "start": 17626,
+        "end": 19001
+      },
+      {
+        "page": 12,
+        "start": 19003,
+        "end": 20529
+      },
+      {
+        "page": 13,
+        "start": 20531,
+        "end": 21705
+      },
+      {
+        "page": 14,
+        "start": 21707,
+        "end": 23410
+      },
+      {
+        "page": 15,
+        "start": 23412,
+        "end": 24756
+      },
+      {
+        "page": 16,
+        "start": 24758,
+        "end": 25909
+      },
+      {
+        "page": 17,
+        "start": 25911,
+        "end": 27038
+      },
+      {
+        "page": 18,
+        "start": 27040,
+        "end": 28349
+      },
+      {
+        "page": 19,
+        "start": 28351,
+        "end": 29578
+      },
+      {
+        "page": 20,
+        "start": 29580,
+        "end": 30964
+      },
+      {
+        "page": 21,
+        "start": 30966,
+        "end": 31816
+      },
+      {
+        "page": 22,
+        "start": 31818,
+        "end": 33452
+      },
+      {
+        "page": 23,
+        "start": 33454,
+        "end": 35178
+      },
+      {
+        "page": 24,
+        "start": 35180,
+        "end": 36652
+      },
+      {
+        "page": 25,
+        "start": 36654,
+        "end": 38075
+      },
+      {
+        "page": 26,
+        "start": 38077,
+        "end": 39913
+      },
+      {
+        "page": 27,
+        "start": 39915,
+        "end": 41914
+      },
+      {
+        "page": 28,
+        "start": 41916,
+        "end": 44553
+      },
+      {
+        "page": 29,
+        "start": 44555,
+        "end": 47840
+      },
+      {
+        "page": 30,
+        "start": 47842,
+        "end": 50675
+      },
+      {
+        "page": 31,
+        "start": 50677,
+        "end": 51935
+      }
+    ]
+  }
+]

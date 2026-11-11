@@ -85,21 +85,131 @@ def fingerprint(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
 
 
-def chunk_reports(reports, size=3000, overlap=500):
-    if not 0 <= overlap < size:
-        raise ValueError('Require 0 <= overlap < size.')
-    documents = []
+def report_sections(report):
+    """Recognize explicit source headings without changing any report text."""
+    headings = {'summary', 'technical details', 'mitigations', 'detection',
+                'references', 'acknowledgements', 'contact information', 'resources',
+                'overview of activity', 'initial access', 'persistence',
+                'credential access', 'discovery', 'lateral movement',
+                'command and control', 'defense evasion', 'collection', 'exfiltration',
+                'impact', 'execution', 'indicators of compromise', 'incident response',
+                'detection methods', 'malware analysis', 'persistence and discovery',
+                'exfiltration and impact', 'privilege escalation',
+                'privilege escalation and lateral movement', 'data exfiltration',
+                'encryption', 'leveraged tools', 'mitre att&ck tactics and techniques'}
+    sections = []
+    offset = 0
+    for line in report['content'].splitlines(keepends=True):
+        title = ' '.join(line.split())
+        if title.casefold() in headings or title.casefold().startswith(('appendix a:', 'appendix b:', 'appendix c:')):
+            sections.append({'heading': title, 'start': offset})
+        offset += len(line)
+    return sections
+
+
+def annotate_chunk(chunk, report, start):
+    sections = report_sections(report)
+    end = start + len(chunk['content'])
+    active = [s for s in sections if s['start'] <= start]
+    within = [s['heading'] for s in sections if start < s['start'] < end]
+    chunk['section_headings'] = list(dict.fromkeys(
+        ([active[-1]['heading']] if active else []) + within))
+    return chunk
+
+
+def analyst_citations(record, chunks, reports):
+    """Resolve internal references into source quotations and human-readable locations."""
+    by_chunk = {c['chunk_id']: c for c in chunks}
+    by_report = {r['report_id']: r for r in reports}
+    citations = []
+    seen = set()
+
+    def visit(value):
+        if isinstance(value, dict):
+            if 'chunk_id' in value and 'quote' in value:
+                chunk = by_chunk.get(value['chunk_id'])
+                if chunk and value['quote'] in chunk['content']:
+                    report = by_report[chunk['report_id']]
+                    offset = int(chunk['chunk_id'].rsplit(':', 1)[1]) + chunk['content'].index(value['quote'])
+                    headings = [s for s in report_sections(report) if s['start'] <= offset]
+                    key = (report['report_id'], offset, value['quote'])
+                    if key not in seen:
+                        seen.add(key)
+                        citations.append({'title': report['title'], 'publisher': report['publisher'],
+                            'published': report['published'], 'updated': report.get('updated'),
+                            'source_url': report['source_url'],
+                            'section_heading': headings[-1]['heading'] if headings else 'Section not identified in snapshot',
+                            'quote': value['quote'], 'report_id': report['report_id'],
+                            'chunk_id': value['chunk_id']})
+            for child in value.values():
+                visit(child)
+        elif isinstance(value, list):
+            for child in value:
+                visit(child)
+    visit(record)
+    return citations
+
+
+def render_evidence_html(record, chunks, reports):
+    """Show verifiable evidence without requiring analysts to interpret chunk IDs."""
+    from html import escape
+    from urllib.parse import urlparse
+    citations = analyst_citations(record, chunks, reports)
+    if not citations:
+        return '<p>No verified supporting quotations available.</p>'
+    blocks = []
+    for c in citations:
+        url = c['source_url']
+        link = (f'<a href="{escape(url, quote=True)}">View original report</a>'
+                if urlparse(url).scheme in {'https', 'http'} else 'Source link unavailable')
+        revision = f' · Updated {escape(c["updated"])}' if c.get('updated') else ''
+        blocks.append(f'<article><h4>{escape(c["title"])}</h4>'
+                      f'<p>{escape(c["publisher"])} · {escape(c["published"])}{revision} · '
+                      f'Section: {escape(c["section_heading"])}</p>'
+                      f'<blockquote style="white-space:pre-wrap">{escape(c["quote"])}</blockquote>'
+                      f'<p>{link}</p></article>')
+    return '\n'.join(blocks)
+
+
+def validate_reports(reports):
+    """Apply the same core report contract to original text and downloaded PDFs."""
+    from datetime import date
+    from urllib.parse import urlparse
+    required = {'report_id', 'title', 'publisher', 'published', 'source_url', 'content'}
+    if not isinstance(reports, list) or not reports:
+        raise ValueError('The report collection must be a nonempty list.')
     seen = set()
     for report in reports:
-        required = {'report_id', 'title', 'publisher', 'published', 'source_url', 'content'}
-        if not required <= report.keys() or not report['content'].strip():
-            raise ValueError('Report needs provenance and nonempty content.')
+        if not isinstance(report, dict) or not required <= report.keys():
+            raise ValueError('Each report needs the six core provenance/content fields.')
+        if any(not isinstance(report[field], str) or not report[field].strip() for field in required):
+            raise ValueError('Core report fields must be nonempty strings.')
         if report['report_id'] in seen:
             raise ValueError('Duplicate report ID.')
         seen.add(report['report_id'])
+        date.fromisoformat(report['published'])
+        url = urlparse(report['source_url'])
+        if url.scheme not in {'https', 'http'} or not url.netloc:
+            raise ValueError('Report source_url must be an absolute HTTP(S) URL.')
+        if report.get('updated') is not None:
+            date.fromisoformat(report['updated'])
+        if 'page_count' in report and (type(report['page_count']) is not int or report['page_count'] < 1):
+            raise ValueError('PDF page_count must be a positive integer.')
+    return reports
+
+
+def chunk_reports(reports, size=3000, overlap=500):
+    """One unchanged sliding-window strategy for every report in the corpus."""
+    validate_reports(reports)
+    if type(size) is not int or type(overlap) is not int or not 0 <= overlap < size:
+        raise ValueError('Require integer sizes with 0 <= overlap < size.')
+    documents = []
+    for report in reports:
         for start in range(0, len(report['content']), size - overlap):
-            documents.append({**report, 'content': report['content'][start:start+size],
-                              'chunk_id': f"{report['report_id']}:{start}"})
+            chunk = {**report, 'content': report['content'][start:start + size],
+                     'chunk_id': f"{report['report_id']}:{start}"}
+            annotate_chunk(chunk, report, start)
+            documents.append(chunk)
             if start + size >= len(report['content']):
                 break
     return documents
@@ -473,6 +583,7 @@ or validated detection rules. Do not fetch URLs, query telemetry, or distribute 
         payload = {'report': {k: v for k, v in self.reports[report_id].items() if k != 'content'},
                    'synthetic_profile': True, 'triage': self.triage[report_id],
                    'processed': result, 'analyst_review': review,
+                   'analyst_citations': analyst_citations(result, self.documents, list(self.reports.values())),
                    'citations': {c['chunk_id']: {'source_url': c['source_url'], 'report_id': report_id}
                                  for c in self._chunks(report_id)}}
         Path(path).write_text(json.dumps(payload, indent=2) + '\n')

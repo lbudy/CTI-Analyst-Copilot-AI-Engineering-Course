@@ -1,0 +1,92 @@
+[
+  {
+    "report_id": "AA24-109A",
+    "title": "#StopRansomware: Akira Ransomware",
+    "publisher": "FBI, CISA and partners",
+    "published": "2024-04-18",
+    "updated": "2025-11-13",
+    "source_url": "https://www.ic3.gov/CSA/2025/251113.pdf",
+    "snapshot_date": "2026-11-11"
+  },
+  {
+    "report_id": "AA24-242A",
+    "title": "#StopRansomware: RansomHub Ransomware",
+    "publisher": "FBI, CISA and partners",
+    "published": "2024-08-29",
+    "updated": null,
+    "source_url": "https://www.ic3.gov/CSA/2024/240829.pdf",
+    "snapshot_date": "2026-11-11"
+  },
+  {
+    "report_id": "AA24-131A",
+    "title": "#StopRansomware: Black Basta",
+    "publisher": "FBI, CISA and partners",
+    "published": "2024-05-10",
+    "updated": "2024-11-08",
+    "source_url": "https://www.ic3.gov/CSA/2024/240511.pdf",
+    "snapshot_date": "2026-11-11"
+  },
+  {
+    "report_id": "AA23-320A",
+    "title": "Scattered Spider",
+    "publisher": "FBI, CISA and partners",
+    "published": "2023-11-16",
+    "updated": "2025-07-29",
+    "source_url": "https://www.ic3.gov/CSA/2025/250729.pdf",
+    "snapshot_date": "2026-11-11"
+  },
+  {
+    "report_id": "AA23-319A",
+    "title": "#StopRansomware: Rhysida Ransomware",
+    "publisher": "FBI, CISA and partners",
+    "published": "2023-11-15",
+    "updated": null,
+    "source_url": "https://www.ic3.gov/CSA/2023/231115.pdf",
+    "snapshot_date": "2026-11-11"
+  },
+  {
+    "report_id": "AA25-071A",
+    "title": "#StopRansomware: Medusa Ransomware",
+    "publisher": "FBI, CISA and partners",
+    "published": "2025-03-12",
+    "updated": null,
+    "source_url": "https://www.ic3.gov/CSA/2025/250312.pdf",
+    "snapshot_date": "2026-11-11"
+  },
+  {
+    "report_id": "AA23-165A",
+    "title": "Understanding Ransomware Threat Actors: LockBit",
+    "publisher": "FBI, CISA and partners",
+    "published": "2023-06-14",
+    "updated": null,
+    "source_url": "https://www.ic3.gov/CSA/2023/230614.pdf",
+    "snapshot_date": "2026-11-11"
+  },
+  {
+    "report_id": "AA23-136A",
+    "title": "#StopRansomware: BianLian Data Extortion Group",
+    "publisher": "FBI, CISA and partners",
+    "published": "2023-05-16",
+    "updated": "2024-11-20",
+    "source_url": "https://www.ic3.gov/CSA/2024/241120.pdf",
+    "snapshot_date": "2026-11-11"
+  },
+  {
+    "report_id": "AA23-335A",
+    "title": "IRGC-Affiliated Cyber Actors Exploit PLCs in Multiple Sectors, Including US Water and Wastewater Systems Facilities",
+    "publisher": "FBI, CISA and partners",
+    "published": "2023-12-01",
+    "updated": "2024-12-18",
+    "source_url": "https://www.ic3.gov/CSA/2023/231201.pdf",
+    "snapshot_date": "2026-11-11"
+  },
+  {
+    "report_id": "AA23-061A",
+    "title": "#StopRansomware: BlackSuit (Royal) Ransomware",
+    "publisher": "FBI, CISA and partners",
+    "published": "2023-03-02",
+    "updated": "2024-08-27",
+    "source_url": "https://www.ic3.gov/CSA/2024/240807.pdf",
+    "snapshot_date": "2026-11-11"
+  }
+]
