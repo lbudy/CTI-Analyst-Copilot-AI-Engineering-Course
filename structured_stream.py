@@ -17,6 +17,8 @@ class RAGResponseHandler(JSONParserHandler):
     def on_array_item_end(self, path, field_name, item=None):
         if field_name == 'followup_questions':
             self.on_field('followup_question', item)
+        elif field_name == 'references' and isinstance(item, dict):
+            self.on_field('reference', item)
 
 
 class StructuredStreamDisplay:

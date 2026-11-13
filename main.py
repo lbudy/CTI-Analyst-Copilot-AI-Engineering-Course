@@ -30,6 +30,8 @@ async def main():
     parser.add_argument('--stream-mode', choices=['simple', 'text', 'structured'])
     args = parser.parse_args()
     load_dotenv(ROOT / '.env')
+    from monitoring import configure_monitoring
+    configure_monitoring()
     mode = args.stream_mode or ('structured' if args.stream else None)
     if mode and not args.question:
         parser.error('--stream or --stream-mode requires --question')

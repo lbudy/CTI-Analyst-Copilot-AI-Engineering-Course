@@ -10,3 +10,6 @@ __pycache__/
 
 # Local analyst decisions and reviewed handoffs
 outputs/
+
+# Logfire local project credentials
+.logfire/

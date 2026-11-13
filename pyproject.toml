@@ -11,6 +11,10 @@ dependencies = [
     "python-dotenv>=1.2.3",
     "pypdf>=6,<7",
     "pydantic-ai-slim[openai]>=1,<2",
+    "jaxn>=0.0.5",
+    "logfire>=5.6.0",
+    "pandas>=3.0.6",
+    "tqdm>=4.70.1",
 ]
 
 [project.optional-dependencies]
@@ -27,8 +31,11 @@ dev = [
     "jupyter>=1.1.1",
     "pytest>=9.2.0",
     "pytest-asyncio>=1.4.1.post1",
+    "pytest-xdist>=3.8.0",
 ]
 
 [tool.pytest.ini_options]
+pythonpath = ["."]
+asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 markers = ["live: paid provider-backed evaluations (explicit opt-in only)"]

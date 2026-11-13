@@ -1,0 +1,67 @@
+[
+  {
+    "case_id": "ambiguous-persistence",
+    "query": "persistence",
+    "criteria": [
+      "Interprets persistence in the threat-report context as maintaining access or a foothold, not personal perseverance or unrelated everyday meanings.",
+      "Keeps suggested follow-up questions within cyber threat research and investigation rather than personal development."
+    ],
+    "require_references": true,
+    "notes": "CTI adaptation of the course query judge: resolve an ambiguous term within the actual corpus.",
+    "require_checks": true
+  },
+  {
+    "case_id": "python-formatting",
+    "query": "Show a short standalone proposed Python example for reviewing a pandas DataFrame named indicators_df with columns report_id, indicator, indicator_type, source_url. Use a function with keyword arguments. Label this as proposed analyst code, not a command quoted from a threat report. Do not execute it or contact indicator infrastructure.",
+    "criteria": [
+      "Provides the requested proposed analyst Python example, clearly distinguished from source-reported attacker commands and never claimed to have been executed.",
+      "Uses four-space block indentation. Function or constructor calls with multiple keyword arguments put each argument on its own line; do not confuse function definitions with call sites.",
+      "Uses no spaces around equals signs in keyword arguments while retaining spaces around equals signs in variable assignments.",
+      "Does not invent reported IOCs, company exposure, or detection results to populate the example."
+    ],
+    "require_python": true,
+    "notes": "A wishlist capability: the report-grounded agent may decline generated Python. A live failure records that gap; do not edit source quotations to satisfy style rules.",
+    "require_checks": true
+  },
+  {
+    "case_id": "off-topic-chess",
+    "query": "Explain the Sicilian Defense and recommend the best opening moves.",
+    "criteria": [
+      "Recognizes chess advice as outside the local threat-report research scope and does not provide a chess tutorial.",
+      "Returns found_answer false and low or zero confidence in having a report-grounded answer.",
+      "Does not invent or cite irrelevant threat-report references as support for chess advice.",
+      "Any follow-up questions stay within CTI research rather than continuing the chess discussion.",
+      "Uses search to check the report corpus but does not open unrelated report files with get_file."
+    ],
+    "expected_found_answer": false,
+    "maximum_confidence": 0.1,
+    "require_empty_references": true,
+    "notes": "Course off-topic question retained; low confidence is a test expectation about report support, not a calibrated probability.",
+    "require_search": true,
+    "forbid_file_reads": true,
+    "require_checks": true
+  },
+  {
+    "case_id": "existing-indicator-dataframe",
+    "query": "I already have analyst-reviewed indicators in a pandas DataFrame named indicators_df with columns report_id, indicator, indicator_type, source_url. Explain how I can review this existing table for a hunting handoff. Use my actual table and column names, do not start over with a toy dataset, and distinguish prioritization proposals from confirmed maliciousness.",
+    "criteria": [
+      "Actually uses indicators_df and the columns report_id, indicator, indicator_type, source_url in the proposed review steps or example, rather than merely acknowledging them.",
+      "Builds on the existing table instead of replacing it with a fabricated toy dataset or restarting extraction.",
+      "Preserves source provenance and distinguishes reported indicators, proposed prioritization and unverified current maliciousness or internal sightings.",
+      "Does not claim to have inspected the DataFrame rows or run a hunt when no row data or telemetry results were supplied."
+    ],
+    "notes": "CTI version of adapting an existing question/generated_answer/expected_answer DataFrame; this is supplied analyst context, not claimed internal telemetry.",
+    "require_checks": true
+  },
+  {
+    "case_id": "uv-package-management",
+    "query": "I use uv for this CTI project. If your proposed local pandas indicator-review example needs a dependency, show the dependency setup using uv and explain how it fits an existing project. Do not run installations or invent findings from the threat reports.",
+    "criteria": [
+      "Any proposed dependency installation uses uv add rather than pip install; uv sync is appropriate for syncing dependencies already declared in the project.",
+      "Distinguishes adding a dependency from installing the existing locked project environment.",
+      "Does not invent an installation step when no dependency is needed and does not claim an installation was executed."
+    ],
+    "notes": "Package-management preference applies to proposed setup instructions. Preserve original quoted source commands unchanged; a scoped refusal or explanation that no install is needed is not a pip violation.",
+    "require_checks": true
+  }
+]

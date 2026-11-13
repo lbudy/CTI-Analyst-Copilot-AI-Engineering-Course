@@ -323,3 +323,162 @@ uv run python main.py --question "Akira VMware evidence" --stream-mode simple
 uv run python main.py --question "Akira VMware evidence" --stream
 uv run pytest tests/test_pydantic_streaming.py -q
 ```
+
+## Streamlit chat application
+
+`app.py` wraps the existing agent without modifying its code. Do **not** rename it `streamlit.py`, which would shadow the Streamlit library.
+
+```bash
+uv run --extra ui streamlit run app.py
+```
+
+The sidebar links to `lbudy/CTI-Analyst-Copilot-AI-Engineering-Course`. This project searches local CTI reports, not the course's Evidently documentation corpus; file-read links therefore open each report's original advisory URL. The app streams structured answer fields with a cursor, retains chat and expanded activity panels across reruns, displays type/confidence/found metadata, and offers clickable follow-up questions only for the latest answer. Clear conversation resets chat and agent history while retaining the cached session agent and index. Each session reuses its own async loop for successive model calls. Failures retain tool activity and remove unvalidated preview content. Chat submissions make paid model requests.
+
+## Course pytest lesson (Section 19)
+
+The original `tests/test_agent.py` still tests the earlier custom agent. `tests/test_documentation_agent.py` follows the course with our Pydantic AI agent, actual CTI report tools, structured output assertions, recorded search/get_file calls, fixtures and formatting checks. `tests/helpers.py::collect_tools` only inspects messages. It never chooses or runs tools.
+
+```bash
+uv sync --dev
+uv run pytest tests/test_documentation_agent.py -q
+uv run pytest -q
+# Explicit paid provider-backed scenario:
+uv run pytest tests/test_documentation_agent.py -m live --run-live -v
+```
+
+VS Code testing discovery is configured in `.vscode/settings.json`; `pythonpath = ["."]` is configured in `pyproject.toml`. Regular tests disable real Pydantic AI provider requests. Live-marked tests require `--run-live`. Fake responses test deterministic control flow, not model behavior or factual quality. Code blocks and source references test formatting, not correctness.
+
+Completed course-test results append to `outputs/test_usage.jsonl`. Terminal summaries separate this run from accumulated runs, and offline fixtures from live tokens. Add verified `--input-price`, `--output-price`, and optional `--cached-input-price` values (USD per million tokens) to the live command to estimate costs. Unknown models stay unpriced (null), not zero. Section 22 adds a dated, officially sourced default table for known course models. Usage for a returned result is captured before assertions, including when an assertion fails; provider failures before a result returns can still incur costs absent from this ledger. The ledger is local and gitignored with other outputs.
+
+Course tool-call follow-up (Section 19f): `tests/utils.py` supplies the `ToolCall` dataclass and `collect_tools` function. It inspects recorded message parts, filters `final_result`, and uses the SDK's `args_as_dict()` because stored arguments may be JSON text or dictionaries. The earlier dictionary helper remains compatible with existing tests. `-s` disables pytest capture so printed tool activity and responses are visible.
+
+```bash
+uv run pytest tests/test_documentation_agent.py::test_agent_runs -s
+uv run pytest tests/test_documentation_agent.py::test_agent_uses_tools -s
+uv run pytest tests/test_documentation_agent.py::test_live_agent_runs --run-live -s
+```
+
+The live question can legitimately retrieve either Volt Typhoon advisory. Citation assertions therefore require a URL belonging to a report actually opened, rather than forcing one report ID for a broad question. This checks the observed tool sequence and output format; it does not verify each quoted command or analytical claim.
+
+## Fixtures and runner refactoring (Section 20)
+
+`tests/conftest.py` now provides a module-scoped `agent` fixture and prints setup duration once with `-s`. The offline tests temporarily override that same agent's model while retaining real report tools. Each run starts with fresh messages unless history is explicitly passed; the fixture does not cache responses.
+
+`doc_agent.AgentStreamRunner` owns the user, model-request and tool-node methods. It accepts a JSON handler, explicit `verbose` flag, usage-limit config and the existing `on_event` callback. The production `run_agent_stream` function is a thin wrapper, preserving the CLI and Streamlit interface. Terminal runs render fields through the existing RAGResponseHandler. `tests.utils.run_agent_test` injects a no-op JSONParserHandler and `verbose=False` so both answer text and user/tool prints are quiet. No-op JSON handling alone would not suppress separate tool prints.
+
+jaxn is now a core dependency because the structured runner and quiet test helper consume streamed JSON without requiring the optional UI extra. `uv sync --dev` installs it. Earlier text streaming functions remain available for Section 18's comparison. Output parsing resets per model node and call index, including validation retries. Usage tracking and explicit live-test opt-in remain intact.
+
+```bash
+uv run pytest tests/test_documentation_agent.py -s
+uv run pytest tests/test_stream_runner_refactor.py -q
+```
+
+## Source examples and structured references (Section 21)
+
+The new `test_agent_includes_references` was first run against the old schema and failed because `references` did not exist. `models.py` now defines `Reference(file_path, explanation)` and extends the earlier six-field course response with a typed reference list. The old class in `course_structured_agent.py` is unchanged; an empty-list default keeps earlier saved records readable. The existing application model and instructions request exact filenames from reports actually used, with an explanation. Live scenario assertions check reference presence and correspondence with opened files.
+
+Technical examples are adapted to CTI: quote source commands/code in appropriately labeled fences when relevant to the question; do not force Python into reports that contain none, invent commands, or complete truncated source examples. DEFAULT_INSTRUCTIONS is the maintained prompt; SIMPLE_INSTRUCTIONS is only its compatibility alias.
+
+The Streamlit UI displays reference links and explanations as structured items arrive, then preserves the validated list in chat history. Links resolve to the original advisory URL from the local corpus rather than the course's Evidently repository. Unknown filenames never receive invented links. Cached agents from the previous response-schema version are rebuilt. Preview references are cleared if output fails.
+
+```bash
+uv run pytest tests/test_documentation_agent.py::test_agent_includes_code_in_answer -s
+uv run pytest tests/test_documentation_agent.py::test_agent_includes_references -s
+uv run pytest tests/test_response_references.py tests/test_streamlit_app.py -q
+```
+
+Offline fixture tests verify typed fields, streaming, UI replay, source-backed snippets and tool/reference correspondence. They do not establish live answer correctness or analytical quality; use explicit provider scenarios and evidence-based review for those.
+
+
+## Per-model test cost tracking (Section 22)
+
+`tests/cost_tracker.py` follows the course's defaultdict(RunUsage), automatic capture and end-of-session reporting. `run_agent_test` identifies the executed provider/model from the response, captures completed usage before returning, and optionally prints usage with `show_usage=True`. Manual capture calls were removed from course scenarios; duplicate-result guards prevent double accounting. Existing explicit capture remains available to tests bypassing the helper.
+
+`pytest_sessionfinish` reports current-session input/output/cached tokens and estimated USD per model, with a total. The existing JSONL ledger and terminal summary retain per-test/run records and across-run totals. Offline model usage is kept separate and excluded from API costs, including when an agent's configured model still looks like OpenAI under a FunctionModel override. In-memory accumulators reset each pytest invocation; the ledger persists. Old unpriced entries are not silently repriced.
+
+Default standard text rates were checked on **2026-11-12** against official [GPT-4o mini](https://developers.openai.com/api/docs/models/gpt-4o-mini) and [GPT-4o](https://developers.openai.com/api/docs/models/gpt-4o) pages. The table includes cached-input discounts and explicitly listed snapshot aliases. Unknown models remain unpriced. Existing CLI rate overrides take precedence for that invocation; estimates exclude taxes, non-token fees and account-specific adjustments. Provider failures before a completed result returns may incur charges absent from this tracker. These are estimates, not billing reconciliation.
+
+```bash
+uv run pytest tests/test_documentation_agent.py -s
+uv run pytest tests/test_cost_tracking.py -q
+# Explicit paid model scenario; default table rates applied automatically:
+uv run pytest tests/test_documentation_agent.py::test_live_agent_runs --run-live -s
+```
+
+## Course LLM-as-a-judge tests (Section 23)
+
+`tests/judge.py` adds the course's `JudgeCriterion`, `JudgeFeedback`, tool-free `create_judge_agent` and `assert_criteria`. The prompt includes the user question, structured answer, normalized tool-call trace and plain-English requirements. Full tool returns are omitted to limit cost; supply source passages for grounding criteria. A judge without source evidence must not infer factual correctness from prose, references or confidence.
+
+Every criterion must be evaluated exactly once. Missing, duplicate or substituted descriptions trigger bounded validation retries; failed verdicts produce a combined assertion message. The judge has no search/file tools, cannot approve intelligence, and remains a fallible model evaluator. The existing 0–4 evaluator in `evals/evaluation.py` is preserved.
+
+`tests/test_judge.py` contains an offline mechanics test and explicit live scenarios for tool usage, off-topic handling and unsupported company-targeting claims. `tests/test_judge_contract.py` covers strict verdicts, complete criterion coverage, retry bounds and prompt/tool constraints. `tests/utils.py::get_model_name` is shared by research and judge capture. The ledger records `usage_role` as agent or judge in addition to provider/model, so equal-model costs still remain attributable. Prior ledger rows stay unchanged.
+
+```bash
+make judge
+uv run pytest tests/test_judge.py::test_live_agent_uses_tools --run-live -s
+uv run pytest tests/test_judge.py::test_live_agent_uses_tools --run-live --judge-model openai:gpt-4o -s
+make judge-live
+make tests
+make run
+```
+
+Live commands make paid agent and judge requests. `--agent-model` and `--judge-model` independently select test models; defaults retain the course's gpt-4o-mini. A stronger or different model is not automatically a reliable judge. Compare verdicts with analyst labels and repeat runs before treating them as a quality gate. Preserve deterministic checks for tool order and schema alongside semantic evaluation; inspect failures before changing either the agent or the criteria.
+
+## User-session scenario wishlist (Section 24)
+
+The course's app-testing session is captured as five CTI-adapted cases in `evals/data/user_session_cases.json`: ambiguous persistence terminology, proposed Python formatting, off-topic chess, use of an existing indicator DataFrame and uv dependency instructions. `evals/user_session_testing.md` explains how to turn written/dictated observations into reviewed cases without adding an audio service. These initial cases are expectations, not fabricated observations of successful behavior.
+
+`tests/scenarios.py` validates the catalog and deterministic contracts. `tests/test_user_scenarios.py` parameterizes live agent-plus-judge runs from the catalog. Code is parsed for Python syntax only and never executed. References must name known files opened during the run. Off-topic cases enforce their declared found-answer/confidence/reference contract. The judge evaluates meaning, follow-up relevance, formatting style and adaptation to supplied column names. These tests do not replace source-grounding or analyst review.
+
+```bash
+make scenarios
+uv run pytest tests/test_user_scenarios.py -k ambiguous-persistence --run-live -s
+uv run pytest tests/test_user_scenarios.py -k off-topic-chess --run-live -s
+make scenarios-live
+```
+
+Default runs validate mechanics and skip the five paid cases. Live runs save answers, calls, verdicts or failures to `outputs/scenario_runs/<case_id>/<run_id>/result.json`; costs use the existing agent/judge ledger. Structural failures stop before a judge call. Formatting rules concern proposed Python analysis code, not verbatim source commands. The current report-grounded agent may decline code generation or package questions; those cases expose a desired capability/scope decision rather than justify inventing report evidence. Section 25 subsequently updates the application instructions and adds self-verification; see the measured iteration notes.
+
+## Fixing judge tests (Section 25)
+
+The main notebook now shows typed `Check` records, response `to_string()` rendering, plain-text judge input, context/package/style instructions, bounded research and per-worker JSONL cost aggregation. Saved six-field responses remain readable. Self-checks are model claims; independent judge and source-evidence checks remain necessary. Agent and judge models can be selected separately with pytest flags.
+
+The latest five-case live run passed **2** and failed **3**, estimated recorded token cost **$0.028994**. These are measured failures, not skipped formatting tests or a claim that the agent is production-ready. See [iteration notes](evals/judge_iteration_notes.md) for remaining issues and reproduction commands.
+
+## Monitoring (Section 26)
+
+Logfire instruments Pydantic AI in the existing Streamlit app and CLI. The app groups turns under a session span and records follow-up clicks and thumbs feedback. Configure your own LOGFIRE_TOKEN in .env; content capture is explicitly controlled by LOGFIRE_INCLUDE_CONTENT. See [setup and trace export](docs/monitoring.md). The main notebook includes visible configuration cells in Section 26. No dashboard connection is verified without your project token.
+
+Section 27 applies the course session-context pattern: `logfire.span`, `get_context` and `attach_context` group question/follow-up runs in one trace; clearing chat immediately captures a fresh context. Offline tests verify real trace and parent span IDs without uploading data.
+
+## Human-aligned evaluation (Section 30)
+
+The same notebook now includes 27 CTI candidate questions across nine equivalence partitions, genuine multi-turn collection with saved evidence, response-bound manual labels, and a tool-free judge evaluated against an 18-case calibration / 9-case holdout split. Reports include human quality, errors, failure tags, agreement and false acceptances. See [workflow](evals/quality_workflow.md). Human labels and measured quality are intentionally not fabricated; collection and judging require explicit paid switches.
+
+## Course CSV batch workflow (Section 31)
+
+Added `evals/questions.csv` (27 CTI questions) and `evals/questions_course_reference.csv` (the original 27 Evidently questions supplied by the user). The notebook now follows pandas loading → AgentStreamRunner → normalized tools and cached-token costs → tqdm batch loop → dated combined JSON and cost summary. Failures remain recorded and collection continues. Saved results can enter Section 30's manual labeling workflow. See [batch instructions](evals/csv_batch_workflow.md). Live calls require explicit switches or `uv run python -m evals.batch --run-live`; no human labels are fabricated.
+
+Section 32 adds both course tqdm progress-map helpers. The CSV agent batch uses bounded asyncio concurrency (default 4), isolated case histories/traces and a single checkpoint writer; output stays in CSV order. Use `--max-concurrency 1` for sequential execution. The thread-pool example supports synchronous tasks with a reusable executor. Offline tests cover bounds, ordering, cancellation and continued batch collection; no live speedup is claimed.
+
+## Human review UI (Section 33)
+
+Run `uv run --extra ui streamlit run evals/label_evals.py --server.port 8502` to inspect saved responses, source links, tool evidence and instructions, then label Good/Not Good with reviewer/comments. Progress saves separately to _results.json and resumes on restart. The app advances to the next unlabeled run and exports compatible human labels for the existing judge workflow. See [labeling instructions](evals/labeling_workflow.md). No labels or measured quality are fabricated.
+
+## Course log judge and alignment (Section 34)
+
+`evals/llm_judge.py` adds reasoning-first good/bad verdicts. `evals/evaluate_judge.py` evaluates labeled _results.json files, prints accuracy/precision/recall for bad responses, confusion counts and disagreements, and saves checkpoint JSON plus detailed CSV/metrics. Human judgments are excluded from judge prompts; judge failures remain separate. Calibration is the default split. See [workflow and commands](evals/log_judge_workflow.md). No measured alignment is claimed without actual human labels and live predictions.
+
+## End-to-end quality pipeline (Section 35)
+
+`uv run python evals/run_evals.py --run-live` runs the CSV agent batch, applies the existing log judge and saves good/bad counts, quality percentages, trajectory diagnostics and separate agent/judge costs and wall time. Errors remain separate; reports and manifests support controlled comparisons with --compare. See [pipeline instructions](evals/end_to_end_workflow.md). No human alignment or live quality score is claimed until measured.
+
+## Synthetic evaluation data (Section 36)
+
+The main notebook adds course-style persona questions/reference answers from numbered CTI report text, bulk CSV/JSON generation, exact line provenance and source hashes, followed by the existing agent and reference-aware judge. Generated references remain unreviewed candidates, not human gold. Source checks run before evaluation; references are withheld from the agent. See [workflow](evals/synthetic_workflow.md). Paid generation/evaluation switches default false.
+
+Section 37 adds the course's standalone agent-only synthetic CSV runner: `evals/run_evals_synthetic.py`, with --questions/--output/--limit/--concurrency, default concurrency 5, fresh per-question agents and shared cached tools. It preserves full reference rows for later judging and saves dated _synthetic.json plus cost/token/error/time summaries. Add --run-live to authorize paid collection.
+
+## Three-dimensional synthetic judging (Section 38)
+
+`evals/judge_checks.py` defines independent correctness, instruction-following and trajectory judges. `evals/run_judge_checks.py` runs bounded parallel checks with checkpointed _judged.json, per-check usage/costs and summaries. `evals/explore_judge_results.py` provides a filterable Streamlit browser on port 8503. Missing evidence and provider errors stay distinct from bad verdicts; historical instructions are captured in new collection outputs. See [instructions](evals/three_judges_workflow.md).

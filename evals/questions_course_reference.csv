@@ -1,0 +1,28 @@
+question,group,type
+How do I set up LLM as a judge?,LLM evaluation,direct
+I want to evaluate my chatbot responses,LLM evaluation,vague
+How do I customize evaluation criteria for my use case?,LLM evaluation,specific
+What metrics are available?,Metrics and descriptors,broad
+How do I measure text length?,Metrics and descriptors,specific descriptor
+What's the difference between metrics and descriptors?,Metrics and descriptors,conceptual
+How do I add a scoring function?,Metrics and descriptors,wrong terminology
+How do I export a report as HTML?,Reports,direct how-to
+How do I save my results as a PDF?,Reports,wrong terminology
+How do I add a panel to my dashboard?,Dashboards,direct
+I want to visualize my evaluation results,Dashboards,vague
+How do I add a chart?,Dashboards,wrong terminology
+How do I set up alerts?,Monitoring,direct
+How do I track models in production?,Monitoring,wrong terminology
+How do I create a new project?,Projects,direct
+How do I set up Evidently Cloud?,Projects,setup question
+How do I integrate Evidently with MLflow?,Edge cases,partial/missing
+How do I use Evidently with streaming data?,Edge cases,not covered
+What's the pricing?,Edge cases,non-doc
+How do I set up monitoring?,Edge cases,follow-up
+"Actually, can I just use alerts instead?",Edge cases,follow-up
+Compare Evidently reports to Weights & Biases dashboards,Edge cases,comparison
+What is the Queen's Gambit in chess?,Unrelated,chess
+What caused the Cuban Missile Crisis?,Unrelated,history
+How do I train a random forest model?,Related but not in docs,ML training
+How do I fix class imbalance in my dataset?,Related but not in docs,Data prep
+How do I set up a Grafana dashboard for model monitoring?,Related but not in docs,Monitoring tool
